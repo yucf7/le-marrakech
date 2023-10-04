@@ -2,12 +2,14 @@ const express = require('express'),
     bodyParser=require('body-parser'),
         cookieParser = require('cookie-parser'),
             app = express(),
-                port = process.env.PORT || 4000;
+                cors = require('cors');
 
 const authRoutes = require('./routes/authRoutes'),
         mainRoutes = require('./routes/mainRoutes'),
-            db_init = require('./db/db_init');
+            db_init = require('./db/db_init')
+                port = process.env.PORT || 4000;
 
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended : false}))

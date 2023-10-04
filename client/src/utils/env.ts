@@ -1,0 +1,1 @@
+export const REACT_APP_BACK_URI = 'http://localhost:3000'
