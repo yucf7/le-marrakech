@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
   user:{
     type: mongoose.Types.ObjectId,
-    ref: 'user'
+    ref: 'user',
     required: true
   },
   meals: [{
     type: mongoose.Types.ObjectId,
     ref: 'meal'
-  }]
+  }],
   total: {
     type: Number
   },

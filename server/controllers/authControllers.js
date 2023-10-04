@@ -1,5 +1,6 @@
 
 const User = require("../models/User");
+const authHelper = require('../helpers/authHelper');
 
 
 
@@ -87,7 +88,7 @@ module.exports = {
           
         },
 
-    logout_get = (req, res) => {
+    logout_get : (req, res) => {
         res.cookie('jwt', '', { maxAge: 1 });
         res.redirect('/');
         }
@@ -96,64 +97,26 @@ module.exports = {
 
 // POST exports
 module.exports = {
-    signup_post = async (req, res) => {
-        const {username, email, password,ref } = req.body;
-        var refer = "unknown"
-        try {
-          const alreadyUsern= await User.findOne({username});
-          const alreadyUser=await User.findOne({email});
-          const salt = await bcrypt.genSalt();
-          const hashedpassword = await bcrypt.hash(password, salt);
-      
-          if(!alreadyUsern ){
-            if(!alreadyUser){
-            if(ref)
-            {
-            const userRef = await User.findOne({ username:ref})
-            if(userRef){
-             refer=userRef.username;
-             userRef.refnbr++;
-             userRef.save();
-                       }          
-            }
-                const now = new Date();
-                const value = date.format(now,'MM-YYYY');
-                const user = await User.create({username, email,password: hashedpassword,ref:refer,date:value});
-                 refer='unknown';
-                 const earningStats = await helper.createEarningsStats(user.id);
-                 res.status(201).json({ user: user._id });
-              }
-              else{
-                throw Error('email exists already');
-      
-              }
-      
-        }
-        else{
-          throw Error('username exists already');
-        }
-        }
-        catch(err) {
-      
-          const errors =handleErrors(err);
-          console.log(err)
-          res.status(400).json({ errors });
-        }
-       
+    signup_post : async (req, res) => {
+       const user = req.body;
+
+       authHelper.signup(user)
+       .then((user)=> {
+          res.status(201).json(user);
+       })
+       .catch((error)=>{
+        res.status(204).json({error: error})
+       })
       },
 
-    login_post = async (req, res) => {
+    login_post : async (req, res) => {
         const { email, password } = req.body;
-        try {
-          const user = await User.login(email, password);
-          const token = createToken(user._id,user.username);
-          res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-          res.status(200).json({ user: user._id });
-        } 
-        catch (err) {
-          const errors = handleErrors(err);
-          res.status(400).json({ errors });
-        }
+        authHelper.login(email, password)
+        .then((user)=>{
+          res.status(200).json(user);
+        }).catch((error)=>{
+          res.status(204).json({error})
+        })
       
       }
 }

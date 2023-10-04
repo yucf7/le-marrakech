@@ -3,10 +3,10 @@ const mongoose = require('mongoose'),
 
 
 const userSchema = new mongoose.Schema({
-  firstname:{
+  firstName:{
     type:String
   },
-  lastname:{
+  lastName:{
     type:String
   },
   username: {
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Please enter a password'],
     minlength: [6, 'Minimum password length is 6 characters'],
   },
-  adresse:{
+  address:{
     type:String,
     required:true,
     default:''
