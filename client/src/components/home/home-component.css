@@ -1,0 +1,319 @@
+/* RestaurantPage.css */
+body {
+    background-color: #ffffff;
+    font-family: "Prata", serif;
+    color: #333333;
+    font-size: 15px;
+    overflow-x: hidden;
+    line-height: 24px;
+  }
+  
+  
+/*==================
+ HEADER SECTION
+====================*/
+
+#mu-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      text-align: center;
+      z-index: 1;
+      font-size: 1.2 ;
+      
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .nav-links li {
+      margin: 10px 0;
+    }
+  }
+  
+  
+#mu-about-us {
+    display: inline;
+    float: left;
+    width: 100%;
+    padding: 100px 0;
+  }
+  
+  .mu-about-us-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-about-us-right {
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-left: 15px;
+    width: 100%;
+  }
+  
+  .mu-about-us-right ul {
+    margin-bottom: 20px;
+    padding-left: 25px;
+  }
+  
+  .mu-about-us-right ul li {
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .mu-about-us-right ul li:before {
+    content: "\f0da";
+    font-family: fontAwesome;
+    margin-right: 10px;
+  }
+  
+  .mu-about-us-left {
+    display: inline;
+    float: left;
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-right: 15px;
+    width: 100%;
+  }
+  
+  .mu-title {
+    display: inline;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .mu-title .mu-subtitle {
+    font-size: 50px;
+    font-family: "Tangerine", cursive;
+    line-height: 30px;
+  }
+  
+  .mu-title h2 {
+    color: #000;
+    font-size: 35px;
+    margin-bottom: 5px;
+  }
+
+    
+  /*scrol to top*/
+  
+  .scrollToTop {
+    bottom: 60px;
+    color: #fff;
+    display: none;
+    font-size: 30px;
+    line-height: 50px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 55px;
+    z-index: 999;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    height: 55px;
+    border-radius: 50%;
+  }
+  
+  
+  .scrollToTop:hover,
+  .scrollToTop:focus {
+    color: #fff;
+  }
+  
+  /* Header.css */
+#mu-header {
+    /* Header styles */
+  }
+  
+  .navbar {
+    background-color: #e2e2e2;
+  }
+  
+  .container {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icon-bar {
+    background-color: #fff;
+  }
+  
+  .brand-link {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+  }
+  
+
+/*==================
+ COUNTER SECTION
+====================*/
+
+
+#mu-counter {
+    background-attachment: fixed;
+    /* background-image: url("../../../public/images/home/slider/counter.jpg");  */
+    background-size: cover;
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-counter-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: inline;
+    padding: 100px 0;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-counter-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-counter-nav {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .mu-counter-nav li {
+    display: inline-block;
+  }
+  
+  .mu-counter-nav li:last-child {
+    border-right: none;
+  }
+  
+  .mu-counter-nav li .mu-single-counter {
+    color: #fff;
+    display: inline;
+    float: left;
+    padding: 25px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .counter-container{
+    display: flex;
+  justify-content: center; 
+  align-items: center;
+  }
+
+  .mu-single-counter-container{
+    background-color: orange;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 200px!important;
+
+}
+  
+  .mu-counter-nav li .mu-single-counter span {
+    font-family: "Tangerine", cursive;
+    font-size: 40px;
+  }
+  
+  .mu-counter-nav li .mu-single-counter h3 {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  
+  .mu-counter-nav li .mu-single-counter h3 span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    line-height: 40px;
+  }
+  
+  .mu-counter-nav li .mu-single-counter h3 sup {
+    font-weight: normal;
+    display: inline-block;
+    font-size: 35px;
+  }
+  
+  .mu-counter-nav li .mu-single-counter p {
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+  }
+  
+
+
+/*==================
+ MAP SECTION
+====================*/
+
+#mu-map {
+    display: inline;
+    float: left;
+    height: 450px;
+    width: 100%;
+  }
+  
+  #mu-map iframe {
+    width: 100%;
+    height: 100%;
+  }
