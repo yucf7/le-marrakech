@@ -19,12 +19,11 @@ function LoginComponent() {
             headers: {'Content-Type': 'application/json'}
           });
           let resJson = await res.json();
-          if (res.status === 200) {
+          if (resJson && resJson.user) {
+            localStorage.setItem('token', resJson.token)
             navigate('/');
           } else {
             setMessage("Wrong email or password");
-            navigate('/');
-
           }
         } catch (err) {
           console.log(err);
