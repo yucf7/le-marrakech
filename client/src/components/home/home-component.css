@@ -7,11 +7,74 @@ body {
     overflow-x: hidden;
     line-height: 24px;
   }
+
+
+/*==================
+	SLIDER SECTION
+====================*/
+
+
+  
+  .mu-slider-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+ 
+  
+  
+  .mu-top-slider .mu-top-slider-single img {
+    width: 100%;
+  }
+  
+  .mu-top-slider .mu-top-slider-single .mu-top-slider-content {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+    right: 15%;
+    text-align: center;
+    z-index: 99;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  }
+  
+  .mu-top-slider .mu-top-slider-single .mu-top-slider-content .mu-slider-small-title {
+    font-family: "Tangerine", cursive;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #fff;
+  }
+  .carousel-img {
+    background-color: rgba(0, 0, 0, 0.5);
+
+  }
+  .mu-top-slider .mu-top-slider-single .mu-top-slider-content .mu-slider-title {
+    color: #fff;
+    font-size: 70px;
+    line-height: 90px;
+  }
+  
+  .mu-top-slider .mu-top-slider-single .mu-top-slider-content p {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding: 0 30px;
+  }
+  
+
+
+
+
+
   
   
 /*==================
  HEADER SECTION
 ====================*/
+
+
+
 
 #mu-header {
     background-color: #fff;
@@ -170,6 +233,26 @@ body {
   .scrollToTop:focus {
     color: #fff;
   }
+
+
+  /* Style pour le bouton "Commander" */
+.mu-readmore-btn {
+    background-color: #f4a570;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none; 
+    display: inline-block; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.mu-readmore-btn:hover {
+    background-color: #f28a4e;
+}
+
   
   /* Header.css */
 #mu-header {
@@ -196,11 +279,13 @@ body {
   .icon-bar {
     background-color: #fff;
   }
-  
+
   .brand-link {
     text-decoration: none;
     color: #000;
     font-size: 1.2rem;
+
+    
   }
   
 
@@ -211,7 +296,7 @@ body {
 
 #mu-counter {
     background-attachment: fixed;
-    /* background-image: url("../../../public/images/home/slider/counter.jpg");  */
+    background-image: url("../../../public/images/home/slider/5.jpg");  
     background-size: cover;
     display: inline;
     float: left;
@@ -252,12 +337,13 @@ body {
     padding: 25px 0;
     text-align: center;
     width: 100%;
+    
   }
 
   .counter-container{
     display: flex;
-  justify-content: center; 
-  align-items: center;
+    justify-content: center; 
+    align-items: center;
   }
 
   .mu-single-counter-container{
@@ -300,6 +386,9 @@ body {
     margin-bottom: 0;
   }
   
+  .mu-counter-nav{
+    margin-left: 55px;
+  }
 
 
 /*==================
@@ -317,3 +406,182 @@ body {
     width: 100%;
     height: 100%;
   }
+
+
+
+
+  
+/*==================
+ GALLERY SECTION
+====================*/
+
+#mu-gallery {
+    display: inline;
+    float: left;
+    padding: 100px 0;
+    width: 100%;
+  }
+  
+  .mu-gallery-area {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-gallery-content {
+    display: inline;
+    float: left;
+    width: 100%;
+  }
+  
+  .mu-gallery-body {
+    display: inline;
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  .mu-single-gallery {
+    display: inline;
+    float: left;
+    margin-bottom: 30px;
+    width: 33.33%;
+  }
+  
+  .mu-single-gallery:last-child {
+    margin-bottom: 0px;
+  }
+  
+  .mu-single-gallery .mu-single-gallery-item {
+    display: inline;
+    float: left;
+    width: 100%;
+    position: relative;
+  }
+  
+  .mu-single-gallery .mu-single-gallery-item:hover .mu-single-gallery-info {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+  }
+  
+  .mu-single-gallery .mu-single-gallery-item .mu-single-gallery-img {
+    display: inline;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .mu-single-gallery .mu-single-gallery-item .mu-single-gallery-img img {
+    
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+  }
+  
+  .mu-single-gallery .mu-single-gallery-item .mu-single-gallery-info {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding-top: 28%;
+    opacity: 0;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+  }
+  
+  .mu-imglink{
+    width: 50%;
+    margin: 15px;
+  }
+
+
+
+
+
+  /* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Styles du panier */
+#cart {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+
+.remove-button {
+    background-color: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #ff2415;
+}
+
+#checkout-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+#checkout-button:hover {
+    background-color: #45a049;
+}
+
+/* Styles du pied de page */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem 0;
+}
