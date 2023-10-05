@@ -4,6 +4,7 @@ import LoginComponent from './components/login/login-component';
 import { BrowserRouter as Router,Routes, Route, Link, Navigate } from 'react-router-dom';
 import { isAuthenticated } from './utils/auth-middleware';
 import SignupComponent from './components/signup/signup-component';
+import CartComponent from './components/Cart/cart-component';
 
 function App() {
   return (
@@ -30,6 +31,12 @@ function App() {
                 <SignupComponent />
               )
             }
+  />
+
+  <Route
+    path='/cart'
+    element={  <CartComponent/>
+  }
   />
         </Routes>
     </Router>

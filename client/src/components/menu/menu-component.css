@@ -1,129 +1,78 @@
-/*==================
- MENU ITEM SECTION
-====================*/
+/* CSS pour les boutons "+" et "-" et la quantité */
+.menu-item .quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
 
-#mu-restaurant-menu {
-    display: inline;
-    float: left;
-    width: 100%;
-    padding: 100px 0;
-  }
-  
-  .mu-restaurant-menu-area {
-    display: inline;
-    float: left;
-    width: 100%;
-  }
-  
-  .mu-restaurant-menu-content {
-    display: inline;
-    float: left;
-    margin-top: 30px;
-    width: 100%;
-  }
-  
-  .mu-restaurant-menu {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    border: none;
-  }
-  
-  .mu-restaurant-menu li {
-    display: inline-block;
-    float: none;
-  }
-  
-  .mu-restaurant-menu li a {
-    font-family: "Open Sans", sans-serif;
-    font-size: 18px;
-    border-radius: 0;
-    color: #fff;
-    font-size: 18px;
-    margin: 0 15px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-  
-  .mu-restaurant-menu li a:hover,
-  .mu-restaurant-menu .active a,
-  .mu-restaurant-menu .active a:hover,
-  .mu-restaurant-menu .active a:focus {
-    background-color: #FFF;
-  }
-  
-  .mu-tab-content-area {
-    display: inline;
-    float: left;
-    width: 100%;
-    padding: 50px 0;
-  }
-  
-  .mu-tab-content-left {
-    display: inline;
-    float: left;
-    padding-right: 15px;
-    width: 100%;
-  }
-  
-  .mu-tab-content-right {
-    display: inline;
-    float: left;
-    padding-left: 15px;
-    width: 100%;
-  }
-  
-  .mu-menu-item-nav li {
-    border-bottom: 1px dashed #ccc;
-    display: inline;
-    float: left;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    width: 100%;
-  }
-  
-  .mu-menu-item-nav li:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-  
-  .mu-menu-item-nav li .media .media-left {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .mu-menu-item-nav li .media .media-left a,
-  .mu-menu-item-nav li .media .media-left a img {
-    display: block;
-    width: 110px;
-    height: 110px;
-  }
-  
-  .mu-menu-item-nav li .media .media-body .media-heading {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .mu-menu-item-nav li .media .media-body .media-heading a {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-  
-  .mu-menu-item-nav li .media .media-body .mu-menu-price {
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    line-height: 20px;
-  }
-  
-  .mu-menu-item-nav li .media .media-body p {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
+.menu-item .quantity button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mu-subtitle{
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  color: #fff;
+}
+
+.menu-item .quantity button:hover {
+  background-color: #0056b3;
+}
+
+.menu-item .quantity span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.menu-item button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.menu-item button:hover {
+  background-color: #0056b3;
+}
+
+/* CSS pour le menu */
+.menu {
+  text-align: center; /* Centrer le contenu */
+  padding: 50px 0; /* Ajouter un espacement autour du menu */
+}
+
+/* CSS pour les éléments du menu */
+.menu-item {
+  margin: 20px; /* Espacement entre les éléments du menu */
+  padding: 20px; /* Espacement interne des éléments du menu */
+  border: 1px solid #ccc; /* Ajouter une bordure autour des éléments du menu */
+  background-color: #fff; /* Couleur de fond des éléments du menu */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère autour des éléments du menu */
+  opacity: 0.8;
+  transition: transform 0.3s; /* Ajouter une transition de transformation au survol */
+}
+
+.menu-item:hover {
+  transform: translateY(-5px); /* Léger effet de levage au survol */
+}
+
+/* CSS pour le conteneur du menu */
+.menu-container {
+  background-image: url("/public/images/home/slider/menu.jpeg"); /* Remplacez par le chemin de votre image de fond */
+  background-size: cover; /* Ajustez la taille de l'image à la div */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+  background-position: center center; /* Centrez l'image horizontalement et verticalement */
+  padding: 50px 0; /* Ajouter un espacement autour du menu */
+}
+
+/* Le reste de votre CSS pour les éléments de menu va ici */

@@ -284,6 +284,7 @@ body {
     text-decoration: none;
     color: #000;
     font-size: 1.2rem;
+    
 
     
   }
@@ -534,7 +535,7 @@ main {
     background-color: #fff;
     padding: 1rem;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
