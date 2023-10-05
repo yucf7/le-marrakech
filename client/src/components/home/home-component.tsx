@@ -1,6 +1,4 @@
-import React from 'react';
 import './home-component.css'; 
-
 const HomeComponent = () => {
 
   return (
@@ -9,14 +7,17 @@ const HomeComponent = () => {
       <header id="mu-header">
       <nav className="navbar" role="navigation">
         <div className="container">
-          <a href="/" className="brand-link">
-            Le Marrakech<span></span>
+          <a href="/login" className="brand-link">
+            Login<span></span>
+          </a>
+          <a href="/signup" className="brand-link signup-btn">
+            Signup<span></span>
           </a>
 
           <ul id="top-menu" className="nav-links">
             <li>
               <a href="/" className="nav-link">
-                HOME
+                LE MARRAKECH
               </a>
             </li>
             <li>

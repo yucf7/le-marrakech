@@ -30,7 +30,7 @@ function LoginComponent() {
         }
       };
   return (
-    <div className=" ">
+    <div className="login-body">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className='login-title'>Login</h2>
         <div className="form-group">
