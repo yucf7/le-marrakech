@@ -9,12 +9,6 @@ const userSchema = new mongoose.Schema({
   lastName:{
     type:String
   },
-  username: {
-    type: String,
-    required: [true, 'Please enter a username'],
-    unique: true,
-    lowercase: true,
-  },
   email: {
     type: String,
     required: [true, 'Please enter an email'],
@@ -30,11 +24,6 @@ const userSchema = new mongoose.Schema({
     type:String,
     required:true,
     default:''
-    },
-  active:{
-    type:Boolean,
-    required:true,
-    default:true
     }
 });
 

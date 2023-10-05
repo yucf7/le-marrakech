@@ -57,42 +57,8 @@ if (err.message === 'incorrect email') {
 
   return errors;
 }
-//Create token
-const maxAge = 1 * 24 * 60 * 60;
-const createToken = (id,username) => {
-  return jwt.sign({ 
-    id,
-    username }, 
-    'net ninja secret', {
-    expiresIn: maxAge
-  });
-};
 
-// GET exports
 
-module.exports = {
-    signup_get : (req, res) => {
-        const ref=req.query.ref
-        if(ref){
-          res.render('signup',{ref});
-          }else
-          res.render('signup',{ref:''});
-        
-        },
-
-    login_get : (req, res) => {
-            const message=""
-          
-          
-            res.render('login',{message});
-          
-        },
-
-    logout_get : (req, res) => {
-        res.cookie('jwt', '', { maxAge: 1 });
-        res.redirect('/');
-        }
-}
 
 
 // POST exports
@@ -102,7 +68,8 @@ module.exports = {
 
        authHelper.signup(user)
        .then((user)=> {
-          res.status(201).json(user);
+          const token = authHelper.createToken(user.id, user.username)
+          res.status(201).json({user, token});
        })
        .catch((error)=>{
         res.status(204).json({error: error})
@@ -110,11 +77,11 @@ module.exports = {
       },
 
     login_post : async (req, res) => {
-      console.log(req.body)
         const { email, password } = req.body;
         authHelper.login(email, password)
-        .then((user)=>{
-          res.status(200).json(user);
+        .then((user)=> {
+          const token = authHelper.createToken(user.id, user.username)
+          res.status(201).json({user, token});
         }).catch((error)=>{
           res.status(204).json({error})
         })
