@@ -14,7 +14,9 @@ module.exports = {
 
     order: async (req,res) =>{
       const order = req.body;
-      mainHelper.order(order).then((order)=>{
+      mainHelper.orderMeal(order)
+      .then(async (order)=>{
+      await mainHelper.clearCart(order.user);
         res.status(200).json(order)
       })
       .catch((error)=>{
@@ -31,6 +33,44 @@ module.exports = {
           res.status(400).json({error: error})
         })
     },
+
+    getCart: async (req, res)=>{
+      const userId = req.params.userId;
+      if(!userId) return res.status(403);
+      mainHelper.getCartContent(userId).then((cart)=>{
+        res.status(200).json(cart)
+      })
+      .catch((error)=>{
+        res.status(203).json({error: error})
+      })
+    },
+
+    addToCart: async (req, res)=>{
+      const meal = req.params.mealId;
+      const userId = req.params.userId;
+
+      mainHelper.addToCart(userId, meal).then((cart)=>{
+        res.status(200).json(cart)
+      })
+      .catch((error)=>{
+        res.status(203).json({error: error})
+      })
+    },
+
+    getMealById: async (req, res)=>{
+      const mealId = req.params.mealId;
+      mainHelper.getMealById(mealId).then((meal)=>{
+        res.status(200).json(meal)
+      })
+      .catch((error)=>{
+        res.status(203).json({error: error})
+      })
+    },
+
+
+
+
+
     updateOrder: async(req,res)=>{
       const orderId = req.params.orderId;
       const update = req.body;

@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const mainController = require('../controllers/mainControllers')
 
-// get all orders
+// get all meals
 router.get('/', mainController.home);
 
 // order something
@@ -13,6 +13,15 @@ router.get('/order/:userId', mainController.getUserOrders)
 
 // update order
 router.patch('/order/:orderId', mainController.updateOrder);
+
+// add to cart
+router.put('/cart/add/:mealId/:userId', mainController.addToCart)
+
+//  get cart content
+router.get('/cart/:userId',mainController.getCart);
+
+// get meal infos
+router.get('/meal/:mealId',mainController.getMealById) 
 
 // admin API 
 router.post('/admin/createMeal', mainController.createMeal)

@@ -1,6 +1,7 @@
 const { default: mongoose } = require('mongoose');
 const Meal = require('../models/Meal')
-const Order = require('../models/Order')
+const Order = require('../models/Order');
+const Cart = require('../models/Cart');
 
 module.exports.fetchAllMeals = async () => {
     try {
@@ -31,10 +32,50 @@ module.exports.fetchUserOrders = async (userId) =>{
   return data;
 }
 
+module.exports.getCartContent = async (userId) =>{
+  const cart = await Cart.findOne({user: userId}).populate('meals');
+  const data = cart || [];
+  return data;
+}
+
+module.exports.getMealById = async (mealId) =>{
+  const meal = await Meal.findOne({_id: mealId});
+  const data = meal || [];
+  return data;
+}
+
 module.exports.updateOrder = async (orderId, updatedFields) =>{
   const updatedOrder = await Order.findByIdAndUpdate(
     orderId,
     { $set: updatedFields },
+    { new: true } 
+  );
+}
+
+module.exports.addToCart = async (userId, mealId) =>{
+  const cart = await Cart.findOneAndUpdate(
+    { user: userId }, 
+    { $push: { meals: mealId } }, 
+    { new: true } 
+  );
+
+  return cart;
+}
+
+module.exports.clearCart = async (userId) =>{
+  const cart = await Cart.findOneAndUpdate(
+    { user: userId }, 
+    { $set: { meals: [] } }, 
+    { new: true } 
+  )
+  return cart;
+}
+module.exports.updateCart = async (userId, cart)=> {
+  const cartId = await Cart.findOne({user: userId});
+  if(!cartId) return;
+  const updatedOrder = await Order.findByIdAndUpdate(
+    cartId,
+    { $set: cart },
     { new: true } 
   );
 }
