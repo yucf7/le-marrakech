@@ -1,6 +1,16 @@
 import './home-component.css'; 
-const HomeComponent = () => {
+import { useNavigate } from 'react-router-dom';
 
+const HomeComponent = () => {
+  const navigate = useNavigate();
+
+  function logout(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    navigate('/')
+
+
+  }
   return (
     <div>
       
@@ -39,6 +49,11 @@ const HomeComponent = () => {
               <a href="/cart" className="nav-link">
                 CART
               </a>
+            </li>
+            <li>
+              <button onClick={logout }className="logout brand-link">
+                Logout
+              </button>
             </li>
           </ul>
         </div>
