@@ -1,23 +1,28 @@
 import './home-component.css'; 
+import { useNavigate } from 'react-router-dom';
+
 import React, { useEffect, useState } from 'react';
 import { isAuthenticated } from '../../utils/auth-middleware'
-interface HomeComponentProps {
-  isAuthenticated: boolean;
-}
+
 
 const HomeComponent = () => {
   const [isAuthenticatedVar, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
+  function logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+  }
   useEffect(() => {
-    // Perform an asynchronous check for authentication
     async function checkAuthentication() {
-      // Fetch or perform the authentication check here
       const authenticated = await isAuthenticated(); 
       setIsAuthenticated(authenticated);
     }
 
     checkAuthentication();
   }, []);
+
   return (
     <div>
       
@@ -62,6 +67,14 @@ const HomeComponent = () => {
               <a href="/cart" className="nav-link">
                 CART
               </a>
+            </li>
+            <li>
+            {!isAuthenticatedVar ? (
+            null
+        ) : <button onClick={logout}className="logout brand-link">
+        Logout
+      </button>}
+
             </li>
           </ul>
         </div>
