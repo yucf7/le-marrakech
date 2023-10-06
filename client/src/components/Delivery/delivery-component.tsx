@@ -3,7 +3,7 @@ import './delivery-component.css';
 import { useNavigate } from 'react-router-dom';
 
 function DeliveryComponent() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");

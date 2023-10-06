@@ -1,4 +1,3 @@
-/* CSS pour les boutons "+" et "-" et la quantité */
 .menu-item .quantity {
   display: flex;
   align-items: center;
@@ -39,7 +38,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 10px;
-  
+
   
 
 }
@@ -48,34 +47,33 @@
   background-color: #0056b3;
 }
 
-/* CSS pour le menu */
 .menu {
-  text-align: center; /* Centrer le contenu */
-  padding: 50px 0; /* Ajouter un espacement autour du menu */
+  text-align: center; 
+  padding: 50px 0; 
 }
 
 /* CSS pour les éléments du menu */
 .menu-item {
-  margin: 20px; /* Espacement entre les éléments du menu */
-  padding: 20px; /* Espacement interne des éléments du menu */
-  border: 1px solid #ccc; /* Ajouter une bordure autour des éléments du menu */
-  background-color: #fff; /* Couleur de fond des éléments du menu */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère autour des éléments du menu */
+  margin: 20px; 
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  background-color: #fff; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
   opacity: 0.8;
-  transition: transform 0.3s; /* Ajouter une transition de transformation au survol */
+  transition: transform 0.3s; 
 }
 
 .menu-item:hover {
-  transform: translateY(-5px); /* Léger effet de levage au survol */
+  transform: translateY(-5px); 
 }
 
 /* CSS pour le conteneur du menu */
 .menu-container {
-  background-image: url("/public/images/home/slider/menu.jpeg"); /* Remplacez par le chemin de votre image de fond */
-  background-size: cover; /* Ajustez la taille de l'image à la div */
-  background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
-  background-position: center center; /* Centrez l'image horizontalement et verticalement */
-  padding: 50px 0; /* Ajouter un espacement autour du menu */
+  background-image: url("/public/images/home/slider/menu.jpeg"); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center center; 
+  padding: 50px 0; 
 }
 
-/* Le reste de votre CSS pour les éléments de menu va ici */
+
