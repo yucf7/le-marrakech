@@ -1,18 +1,41 @@
 import './home-component.css'; 
-const HomeComponent = () => {
+import React, { useEffect, useState } from 'react';
+import { isAuthenticated } from '../../utils/auth-middleware'
+interface HomeComponentProps {
+  isAuthenticated: boolean;
+}
 
+const HomeComponent = () => {
+  const [isAuthenticatedVar, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Perform an asynchronous check for authentication
+    async function checkAuthentication() {
+      // Fetch or perform the authentication check here
+      const authenticated = await isAuthenticated(); 
+      setIsAuthenticated(authenticated);
+    }
+
+    checkAuthentication();
+  }, []);
   return (
     <div>
       
       <header id="mu-header">
       <nav className="navbar" role="navigation">
         <div className="container">
-          <a href="/login" className="brand-link">
-            Login<span></span>
+          
+          {!isAuthenticatedVar ? (
+            <>
+              <a href="/login" className="brand-link">
+              Login<span></span>
           </a>
-          <a href="/signup" className="brand-link signup-btn">
+            <a href="/signup" className="brand-link signup-btn">
             Signup<span></span>
           </a>
+          </>
+        ) : null}
+          
 
           <ul id="top-menu" className="nav-links">
             <li>

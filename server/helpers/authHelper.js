@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Cart = require('../models/Cart');
 
 const jwt = require('jsonwebtoken');
 
@@ -25,6 +26,7 @@ module.exports.signup = async (user) =>{
                 ?   resolve(createdUser)
                 :   reject ('cant signup') 
         } catch (error) {
+            console.log(error)
             reject(error)
         }
 
@@ -33,12 +35,13 @@ module.exports.signup = async (user) =>{
 
 //Create token
 
-module.exports.createToken = (id,username) => {
+module.exports.createToken = (id, email) => {
     try {
         const maxAge = 86400;
         return jwt.sign({ 
-            id,
-            username }, 
+                id,
+                email 
+            }, 
             JWT_SECRET, {
             expiresIn: maxAge
         });
@@ -47,3 +50,37 @@ module.exports.createToken = (id,username) => {
     }
 
 };
+
+
+module.exports.checkToken = (token) =>{
+    try {
+        var decodedToken;
+        jwt.verify(token, JWT_SECRET, (err, decToken) => {
+        if (err) {
+            return false;
+        } else {
+            decodedToken = decToken;
+        }
+        });
+
+        return decodedToken;
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+
+module.exports.createUserCart = async (userId) => {
+    try {
+        const cart = await Cart.create(
+            {
+                user: userId,
+                meals: []
+            }
+        )
+        return cart;
+      } catch (error) {
+        throw new Error('failed to create cart: ' + error.message);
+      }
+}
