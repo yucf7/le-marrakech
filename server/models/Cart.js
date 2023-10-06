@@ -8,8 +8,10 @@ const cartSchema = new mongoose.Schema({
         },
     meals: [{
         type: mongoose.Types.ObjectId,
-        ref: 'meal'
+        ref: 'meal',
+        quantity: Number
     }],
+
 
 });
 
