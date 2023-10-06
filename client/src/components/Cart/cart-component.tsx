@@ -6,10 +6,11 @@ const CartComponent = () => {
   const [cartItems, setCartItems] = useState<Meal[]>([]);
   const [total, setTotal] = useState(0);
 
-  const updateQuantity = (itemId: string, newQuantity: number) => {
-    const updatedCartItems = cartItems.map((item: Meal) => {
-      if (item.id === itemId) {
-        return { ...item, quantity: newQuantity };
+  const updateQuantity = (itemId: string, newQuantity: number, sign: boolean) => {
+    const updatedCartItems = cartItems.map((item: any) => {
+      if (item._id === itemId) {
+        setTotal(total + (sign ? (item.price) : (-1 * item.price)));
+        return { ...item, orderedQuantity: newQuantity };
       }
       return item;
     });
@@ -22,11 +23,15 @@ const CartComponent = () => {
       fetch(`http://localhost:4000/cart/${userId}`)
         .then((response) => response.json())
         .then((data) => {
-          setCartItems(data.meals);
-          const totalPrice = data.meals.reduce((accumulator: number, currentItem: Meal) => {
-            return accumulator + currentItem.price;
+          const mealsWithQuantities = data.meals.map((meal: any, index: any) => ({
+            ...meal,
+            orderedQuantity: data.quantities[index]
+          }));
+          setCartItems(mealsWithQuantities);
+          const totalPrice = mealsWithQuantities.reduce((accumulator: number, currentItem: any) => {
+            return accumulator + (currentItem.price * currentItem.orderedQuantity);
           }, 0);
-          setTotal(data.total);
+          setTotal(totalPrice);
         })
         .catch((error) => console.error('Erreur lors du chargement des données', error));
     }
@@ -46,16 +51,16 @@ const CartComponent = () => {
         </thead>
         <tbody>
           {cartItems && cartItems.length > 0 ? (
-            cartItems.map((item: Meal) => (
+            cartItems.map((item: any) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>${Number(item.price).toFixed(2)}</td>
                 <td>
-                  <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
-                  {item.quantity}
-                  <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                  <button onClick={() => updateQuantity(item._id, item.orderedQuantity - 1, false)}>-</button>
+                  {item.orderedQuantity}
+                  <button onClick={() => updateQuantity(item._id, item.orderedQuantity + 1, true )}>+</button>
                 </td>
-                <td>${(Number(item.price) * item.quantity).toFixed(2)}</td>
+                <td>${(Number(item.price) * item.orderedQuantity).toFixed(2)}</td>
               </tr>
             ))
           ) : (
