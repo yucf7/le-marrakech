@@ -6,7 +6,7 @@
 }
 
 .menu-item .quantity button {
-  background-color: #007bff;
+  background-color: #e31b47;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -32,13 +32,16 @@
 }
 
 .menu-item button {
-  background-color: #007bff;
+  background-color: #e64747;
   color: #fff;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s;
   margin-top: 10px;
+  
+  
+
 }
 
 .menu-item button:hover {

@@ -4,6 +4,7 @@ module.exports = {
     home: async (req, res) => {
         mainHelper.fetchAllMeals()
           .then((meals) => {
+            console.log(meals)
             res.status(200).json(meals);
           })
           .catch((error) => {

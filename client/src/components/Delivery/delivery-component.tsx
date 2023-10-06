@@ -29,7 +29,7 @@ function DeliveryComponent() {
   };
 
   return (
-    <div className=" ">
+    <div className="delivery-body">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className='login-title'>CONFIRMATION</h2>
         <div className="form-group">

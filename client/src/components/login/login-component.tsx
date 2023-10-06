@@ -21,6 +21,7 @@ function LoginComponent() {
           let resJson = await res.json();
           if (resJson && resJson.user) {
             localStorage.setItem('token', resJson.token)
+            localStorage.setItem('user' , resJson.user._id)
             navigate('/');
           } else {
             setMessage("Wrong email or password");
@@ -30,7 +31,7 @@ function LoginComponent() {
         }
       };
   return (
-    <div className=" ">
+    <div className="login-body">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className='login-title'>Login</h2>
         <div className="form-group">

@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './cart-component.css';
+import { Meal } from '../../interfaces/Meal';
+
+interface Cart {
+  meals: Meal
+}
 
 const CartComponent = () => {
-  // Exemple de données pour les plats dans le panier
-  const initialCartItems = [
-    { id: 1, name: 'SEFFA', price: 15.95, quantity: 2 },
-    { id: 2, name: 'COUSCOUS', price: 12.95, quantity: 1 },
-    { id: 3, name: 'PASTILLA', price: 18.95, quantity: 3 },
-  ];
-
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const [cartItems, setCartItems] = useState<Meal[]>([]);
+  const [total, setTotal] = useState(0);
 
   // Fonction pour mettre à jour la quantité d'un produit dans le panier
-  const updateQuantity = (itemId: any, newQuantity: any) => {
-    const updatedCartItems = cartItems.map((item) => {
+  const updateQuantity = (itemId:String, newQuantity:number) => {
+    const updatedCartItems  = cartItems.map((item : Meal) => {
       if (item.id === itemId) {
         return { ...item, quantity: newQuantity };
       }
@@ -22,16 +21,16 @@ const CartComponent = () => {
     setCartItems(updatedCartItems);
   };
 
-  // Fonction pour calculer le total du panier
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  // Effet pour mettre à jour le total lorsque le panier change
   useEffect(() => {
-    const total = calculateTotal();
-    // Mettre à jour le total dans le state si nécessaire
-  }, [cartItems]);
+    const userId = localStorage.getItem('user');
+    fetch(`http://localhost:4000/cart/${userId}`) 
+      .then((response) => response.json())
+      .then((data) => {
+        setCartItems(data.cartItems);
+        setTotal(data.total);
+      })
+      .catch((error) => console.error('Erreur lors du chargement des données', error));
+  }, []);
 
   return (
     <div className="cart-page">
@@ -46,7 +45,7 @@ const CartComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {cartItems.map((item) => (
+          {cartItems.map((item: Meal) => (
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>${item.price.toFixed(2)}</td>
@@ -61,7 +60,7 @@ const CartComponent = () => {
         </tbody>
       </table>
       <div className="cart-total">
-        <span>Total : ${calculateTotal().toFixed(2)}</span>
+        <span>Total : ${total.toFixed(2)}</span>
       </div>
       <button className="confirm-button">Confirmer la commande</button>
     </div>

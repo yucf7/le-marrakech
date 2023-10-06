@@ -1,10 +1,10 @@
 
 
-body {
+.delivery-body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('../../../public/images/home/slider/delivery.jpeg'); /* Replace with your image path */
+    background-image: url('../../../public/images/home/slider/delivery.jpeg'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -12,16 +12,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
-  .container {
-    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for the form */
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 80px;
-    width: 600px; 
-    text-align: center;
-  }
-  
+ 
   .login-form {
     text-align: center;
   }

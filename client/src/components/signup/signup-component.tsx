@@ -28,10 +28,11 @@ function SignupComponent() {
       let resJson = await res.json();
       if (resJson && resJson.user) {
         localStorage.setItem('token', resJson.token)
+        localStorage.setItem('user' , resJson.user._id)
+
         navigate('/');
       } else {
         setMessage("Wrong email or password");
-        navigate('/');
       }
     } catch (err) {
       console.log(err);
@@ -39,9 +40,9 @@ function SignupComponent() {
   };
 
   return (
-    <div className=" ">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className='login-title'>Sign Up</h2>
+    <div className="signup-body">
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <h2 className='signup-title'>Sign Up</h2>
         <div className="form-group">
           <input
             type="text"

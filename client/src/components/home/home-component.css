@@ -8,7 +8,10 @@ body {
     line-height: 24px;
   }
 
+.signup-btn{
+  margin-left: -150px;
 
+}
 /*==================
 	SLIDER SECTION
 ====================*/
@@ -284,9 +287,13 @@ body {
     text-decoration: none;
     color: #000;
     font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    text-decoration: underline;
     
-
-    
+  }
+  .brand-link:hover {
+    color: #fff;
   }
   
 
