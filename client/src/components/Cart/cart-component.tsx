@@ -17,21 +17,29 @@ const CartComponent = () => {
     });
     if (res.status === 200) {
       const data = await res.json(); 
-      console.log(data)
     }
   }
   const updateQuantity = async (itemId: string, newQuantity: number, sign: boolean) => {
-    const updatedCartItems = cartItems.map((item: any) => {
-      if (item.meal._id === itemId) {
-        setTotal(total + (sign ? (item.meal.price) : (-1 * item.meal.price)));
-        return { ...item, orderedQuantity: newQuantity };
-      }
-      return item;
+    setCartItems(prevCartItems => {
+      const updatedCartItems = prevCartItems.map((item: any) => {
+        if (item.meal._id === itemId) {
+          const updatedQuantity = item.orderedQuantity + (sign ? 1 : -1);
+
+          const orderedQuantity = Math.max(updatedQuantity, 0);
+          if(orderedQuantity > 0)
+            setTotal(total + (sign ? item.meal.price : -item.meal.price));
+          return { ...item, orderedQuantity };
+        }
+        return item;
+      });
+  
+      saveCart(updatedCartItems); 
+  
+      return updatedCartItems; 
     });
-    setCartItems(updatedCartItems);
-    console.log(cartItems)
-    await saveCart(cartItems)
   };
+  
+  
 
   useEffect(() => {
     const userId = localStorage.getItem('user');
@@ -68,7 +76,15 @@ const CartComponent = () => {
                 <td>{item.meal.name}</td>
                 <td>${Number(item.meal.price).toFixed(2)}</td>
                 <td>
-                  <button onClick={() => updateQuantity(item.meal._id, item.orderedQuantity - 1, false)}>-</button>
+                  {
+                    item.orderedQuantity != 1
+                    ? (
+                      <button onClick={() => updateQuantity(item.meal._id, item.orderedQuantity - 1, false)}>-</button>
+                    )
+                    : (
+                      null
+                    )
+                  }
                   {item.orderedQuantity}
                   {
                     !(item.orderedQuantity >= item.meal.quantity)
