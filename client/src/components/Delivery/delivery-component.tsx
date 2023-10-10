@@ -103,7 +103,7 @@ function DeliveryComponent() {
             onChange={(e) => setZipcode(e.target.value)}
             required />
         </div>
-        <button type="submit">Confirmer</button>
+        <button type="submit">Confirm</button>
       </form>
     </div>
   );

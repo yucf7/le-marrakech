@@ -60,13 +60,13 @@ const CartComponent = () => {
   
   return (
     <div className="cart-page">
-      <h1>Votre Panier</h1>
+      <h1>Your Cart</h1>
       <table>
         <thead>
           <tr>
-            <th>Produit</th>
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
+            <th>Meal</th>
+            <th>Price</th>
+            <th>Quantity</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -107,7 +107,7 @@ const CartComponent = () => {
       <div className="cart-total">
         <span>Total : ${Number(total).toFixed(2)}</span>
       </div>
-      <button onClick={()=>navigate('/delivery')} className="confirm-button">Confirmer la commande</button>
+      <button onClick={()=>navigate('/delivery')} className="confirm-button">Confirm</button>
     </div>
   );
 };
