@@ -135,17 +135,17 @@ module.exports.deleteFromCart = async (userId, mealId) =>{
   try {
     const userCart = await Cart.findOne({ user: userId });
 
-if (userCart) {
-  const existingMeal = userCart.meals.find(meal => String(meal.meal) === String(mealId));
+  if (userCart) {
+    const existingMeal = userCart.meals.find(meal => String(meal.meal) === String(mealId));
 
-  if (existingMeal && existingMeal.orderedQuantity > 1) {
-    existingMeal.orderedQuantity -= 1;
-  } else {
-    userCart.meals = userCart.meals.filter(elet => String(elet.meal) !== String(mealId));
+    if (existingMeal && existingMeal.orderedQuantity > 1) {
+      existingMeal.orderedQuantity -= 1;
+    } else {
+      userCart.meals = userCart.meals.filter(elet => String(elet.meal) !== String(mealId));
+    }
+
+    await userCart.save();
   }
-
-  await userCart.save();
-}
 
   await Meal.findOneAndUpdate(
     { _id: mealId },

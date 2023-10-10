@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './cart-component.css';
 import { Meal } from '../../interfaces/Meal';
-import { Cart } from '../../interfaces/Cart';
+import { useNavigate } from 'react-router-dom';
 
 const CartComponent = () => {
   const [cartItems, setCartItems] = useState<Meal[]>([]);
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
 
   const saveCart = async (meals: any[]) =>{
     const body = {meals};
@@ -56,7 +57,7 @@ const CartComponent = () => {
         .catch((error) => console.error('Erreur lors du chargement des données', error));
     }
   }, []);
-
+  
   return (
     <div className="cart-page">
       <h1>Votre Panier</h1>
@@ -106,7 +107,7 @@ const CartComponent = () => {
       <div className="cart-total">
         <span>Total : ${Number(total).toFixed(2)}</span>
       </div>
-      <button className="confirm-button">Confirmer la commande</button>
+      <button onClick={()=>navigate('/delivery')} className="confirm-button">Confirmer la commande</button>
     </div>
   );
 };

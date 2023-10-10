@@ -6,10 +6,19 @@ const orderSchema = new mongoose.Schema({
     ref: 'user',
     required: true
   },
-  meals: [{
-    type: mongoose.Types.ObjectId,
-    ref: 'meal'
-  }],
+  meals: [
+    {
+        meal: {
+            type: mongoose.Types.ObjectId,
+            ref: 'meal',
+            required: true
+        },
+        orderedQuantity: {
+            type: Number, 
+            required: true
+        }
+    }
+],
   total: {
     type: Number
   },

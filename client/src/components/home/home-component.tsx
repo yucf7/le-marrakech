@@ -97,7 +97,7 @@ const HomeComponent = () => {
             <span className="mu-slider-small-title">Welcome</span>
             <h2 className="mu-slider-title">To MARRAKECH</h2>
             <p>Une histoire d'amour avec la cuisine marocaine traditionnelle commence ici, à chaque plat, une aventure sensorielle dans les ruelles envoûtantes de Marrakech.</p>           
-            <button className="mu-readmore-btn mu-reservation-btn">Commander</button>
+            <a href='/menu' className="mu-readmore-btn mu-reservation-btn">Commander</a>
           </div>
     </div>
     <div className="carousel-item mu-top-slider-single">
@@ -106,7 +106,7 @@ const HomeComponent = () => {
             <span className="mu-slider-small-title">The Elegant</span>
             <h2 className="mu-slider-title">Moroccan Restaurant</h2>
             <p>Découvrez un voyage gustatif unique au Marrakech, où les saveurs marocaines authentiques se mêlent à l'élégance française.</p>           
-            <button className="mu-readmore-btn mu-reservation-btn">Commander</button>
+            <a href='/menu' className="mu-readmore-btn mu-reservation-btn">Commander</a>
           </div>
     </div>
     <div className="carousel-item mu-top-slider-single">
