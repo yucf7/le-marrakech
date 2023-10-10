@@ -8,12 +8,12 @@ function DeliveryComponent() {
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
   const [zipcode, setZipcode] = useState("");
-
+  const [alertMessage, setAlertMessage] = useState(""); // Nouvel état pour l'alerte
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://localhost:4000/signup", {
+      let res = await fetch("http://localhost:4000/order", {
         method: "POST",
         body: JSON.stringify({
           zipcode: zipcode,
@@ -23,6 +23,12 @@ function DeliveryComponent() {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
+
+      if (res.status === 200) {
+        setAlertMessage("Successfully");
+      } else {
+        setAlertMessage("Failed");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -32,6 +38,11 @@ function DeliveryComponent() {
     <div className="delivery-body">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className='login-title'>CONFIRMATION</h2>
+        {alertMessage && (
+          <div className={`alert ${alertMessage === 'Successfully' ? 'success' : 'failed'}`}>
+            {alertMessage}
+          </div>
+        )}
         <div className="form-group">
           <input
             type="text"
