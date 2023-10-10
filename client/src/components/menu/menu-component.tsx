@@ -18,12 +18,17 @@ const MenuComponent = () => {
 
   const addToCart = async (menuItem : Meal) => {
     try {
-      const mealId = menuItem.id;
+      const mealId = menuItem._id;
       const userId = localStorage.getItem('user');
       let res = await fetch(`http://localhost:4000/cart/add/${mealId}/${userId}`, {
         method: "PUT",
         headers: {'Content-Type': 'application/json'}
       });
+      if (res.status === 200) {
+        const data = await res.json(); 
+        // show popup animation 
+        // RANYA
+      }
     setCart([...cart, menuItem]);               
   }
   catch(error){

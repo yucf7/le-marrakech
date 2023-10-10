@@ -91,7 +91,6 @@ module.exports = {
       checkToken : async (req, res) =>{
         const token = req.body.jwt;
         const decodedToken = authHelper.checkToken(token)
-        console.log(decodedToken);
         if(decodedToken){
           return res.status(200).json(decodedToken)
         }

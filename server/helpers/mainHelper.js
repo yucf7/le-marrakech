@@ -33,7 +33,7 @@ module.exports.fetchUserOrders = async (userId) =>{
 }
 
 module.exports.getCartContent = async (userId) =>{
-  const cart = await Cart.findOne({user: userId}).populate('meals');
+  const cart = await Cart.findOne({user: userId}).populate('meals.meal');
   const data = cart || [];
   return data;
 }
@@ -53,15 +53,33 @@ module.exports.updateOrder = async (orderId, updatedFields) =>{
 }
 
 module.exports.addToCart = async (userId, mealId) =>{
-  const cart = await Cart.findOneAndUpdate(
-    { user: userId }, 
-    { $push: { meals: mealId } }, 
-    { new: true } 
-  );
+  const cart = await Cart.findOne({user: userId});
+  const existingMeal = cart.meals.find(meal => String(meal.meal) === String(mealId));
+  if (existingMeal) {
+    existingMeal.orderedQuantity += 1;
+  } else {
+    cart.meals.push({
+      meal: mealId,
+      orderedQuantity: 1
+    });
+  }
+  await cart.save();
 
+  await Meal.findOneAndUpdate(
+    { _id: mealId },
+    { $inc: { quantity: -1 } } 
+  );
   return cart;
 }
 
+module.exports.saveCart = async (userId, meals) =>{
+  const cart = await Cart.findOneAndUpdate(
+    { user: userId }, 
+    { $set: { meals: meals } }, 
+    { new: true } 
+  )
+  return cart;
+}
 module.exports.clearCart = async (userId) =>{
   const cart = await Cart.findOneAndUpdate(
     { user: userId }, 
@@ -111,4 +129,32 @@ module.exports.deleteMeal = async (itemId) =>{
           }
     })
 
+}
+
+module.exports.deleteFromCart = async (userId, mealId) =>{
+  try {
+    const userCart = await Cart.findOne({ user: userId });
+
+if (userCart) {
+  const existingMeal = userCart.meals.find(meal => String(meal.meal) === String(mealId));
+
+  if (existingMeal && existingMeal.orderedQuantity > 1) {
+    existingMeal.orderedQuantity -= 1;
+  } else {
+    userCart.meals = userCart.meals.filter(elet => String(elet.meal) !== String(mealId));
+  }
+
+  await userCart.save();
+}
+
+  await Meal.findOneAndUpdate(
+    { _id: mealId },
+    { $inc: { quantity: 1 } } 
+  );
+
+  return userCart;
+  
+  } catch (error) {
+    console.log(error)
+  }
 }

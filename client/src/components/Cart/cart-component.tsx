@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import './cart-component.css';
 import { Meal } from '../../interfaces/Meal';
+import { Cart } from '../../interfaces/Cart';
 
 const CartComponent = () => {
   const [cartItems, setCartItems] = useState<Meal[]>([]);
   const [total, setTotal] = useState(0);
 
-  const updateQuantity = (itemId: string, newQuantity: number, sign: boolean) => {
+  const saveCart = async (meals: any[]) =>{
+    const body = {meals};
+    const userId = localStorage.getItem('user');
+    let res = await fetch(`http://localhost:4000/cart/saveCart/${userId}`, {
+      method: "PUT",
+      headers: {'Content-Type': 'application/json'},
+      body : JSON.stringify(body)
+    });
+    if (res.status === 200) {
+      const data = await res.json(); 
+      console.log(data)
+    }
+  }
+  const updateQuantity = async (itemId: string, newQuantity: number, sign: boolean) => {
     const updatedCartItems = cartItems.map((item: any) => {
-      if (item._id === itemId) {
-        setTotal(total + (sign ? (item.price) : (-1 * item.price)));
+      if (item.meal._id === itemId) {
+        setTotal(total + (sign ? (item.meal.price) : (-1 * item.meal.price)));
         return { ...item, orderedQuantity: newQuantity };
       }
       return item;
     });
     setCartItems(updatedCartItems);
+    console.log(cartItems)
+    await saveCart(cartItems)
   };
 
   useEffect(() => {
@@ -23,13 +39,9 @@ const CartComponent = () => {
       fetch(`http://localhost:4000/cart/${userId}`)
         .then((response) => response.json())
         .then((data) => {
-          const mealsWithQuantities = data.meals.map((meal: any, index: any) => ({
-            ...meal,
-            orderedQuantity: data.quantities[index]
-          }));
-          setCartItems(mealsWithQuantities);
-          const totalPrice = mealsWithQuantities.reduce((accumulator: number, currentItem: any) => {
-            return accumulator + (currentItem.price * currentItem.orderedQuantity);
+          setCartItems(data.meals);
+          const totalPrice = data.meals.reduce((accumulator: number, currentItem: any) => {
+            return accumulator + (currentItem.meal.price * currentItem.orderedQuantity);
           }, 0);
           setTotal(totalPrice);
         })
@@ -52,15 +64,20 @@ const CartComponent = () => {
         <tbody>
           {cartItems && cartItems.length > 0 ? (
             cartItems.map((item: any) => (
-              <tr key={item.id}>
-                <td>{item.name}</td>
-                <td>${Number(item.price).toFixed(2)}</td>
+              <tr key={item.meal.id}>
+                <td>{item.meal.name}</td>
+                <td>${Number(item.meal.price).toFixed(2)}</td>
                 <td>
-                  <button onClick={() => updateQuantity(item._id, item.orderedQuantity - 1, false)}>-</button>
+                  <button onClick={() => updateQuantity(item.meal._id, item.orderedQuantity - 1, false)}>-</button>
                   {item.orderedQuantity}
-                  <button onClick={() => updateQuantity(item._id, item.orderedQuantity + 1, true )}>+</button>
+                  {
+                    !(item.orderedQuantity >= item.meal.quantity)
+                      ? 
+                        <button disabled={item.orderedQuantity >= item.meal.quantity} onClick={() => updateQuantity(item.meal._id, item.orderedQuantity + 1, true )}>+</button>      
+                      : <> (Sold Out)</>
+                  }
                 </td>
-                <td>${(Number(item.price) * item.orderedQuantity).toFixed(2)}</td>
+                <td>${(Number(item.meal.price) * item.orderedQuantity).toFixed(2)}</td>
               </tr>
             ))
           ) : (

@@ -4,7 +4,6 @@ module.exports = {
     home: async (req, res) => {
         mainHelper.fetchAllMeals()
           .then((meals) => {
-            console.log(meals)
             res.status(200).json(meals);
           })
           .catch((error) => {
@@ -57,6 +56,18 @@ module.exports = {
       })
     },
 
+    deleteFromCart: async (req, res)=>{
+      const meal = req.params.mealId;
+      const userId = req.params.userId;
+
+      mainHelper.deleteFromCart(userId, meal).then((cart)=>{
+        res.status(200).json(cart)
+      })
+      .catch((error)=>{
+        res.status(203).json({error: error})
+      })
+    },
+
     getMealById: async (req, res)=>{
       const mealId = req.params.mealId;
       mainHelper.getMealById(mealId).then((meal)=>{
@@ -67,10 +78,16 @@ module.exports = {
       })
     },
 
-
-
-
-
+    saveCart : async(req,res) =>{
+      const userId = req.params.userId;
+      const update = req.body.meals;
+      await mainHelper.saveCart(userId, update).then((order)=>{
+          res.status(200).json(order)
+        })
+        .catch((error)=>{
+          res.status(400).json({error: error})
+        })
+    },
     updateOrder: async(req,res)=>{
       const orderId = req.params.orderId;
       const update = req.body;
