@@ -1,64 +1,77 @@
-
+/* Votre fichier CSS existant */
 
 .delivery-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('../../../public/images/home/slider/delivery.jpeg'); 
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
- 
-  .login-form {
-    text-align: center;
-  }
-  
-  .login-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  input[type="address"],
-  input[type="text"],
-  input[type="password"] {
-    width: 500px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .login-container{
-    width: 400px!important;
-  }
-  button {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #d3d3d3;
-  }
-  
-  .login-title {
-    color: #fff;
-    text-shadow: 1px 1px 1px black;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('../../../public/images/home/slider/delivery.jpeg'); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.message {
-  margin-top: 20px;
+.login-form {
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="address"],
+input[type="text"],
+input[type="password"] {
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-container{
+  width: 400px!important;
+}
+
+button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #d3d3d3;
+}
+
+.login-title {
   color: #fff;
-  font-style: bold;
   text-shadow: 1px 1px 1px black;
-  font-size: 20px;
+}
 
+/* Nouveaux styles pour l'alerte */
+.alert {
+  background-color: #4CAF50; /* Couleur de fond verte par défaut */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert.success {
+  background-color: #4CAF50; /* Couleur de fond verte pour le succès */
+}
+
+.alert.failed {
+  background-color: #FF5733; /* Couleur de fond rouge pour l'échec */
 }

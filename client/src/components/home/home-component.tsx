@@ -115,7 +115,7 @@ const HomeComponent = () => {
             <span className="mu-slider-small-title">Delicious</span>
             <h2 className="mu-slider-title">Delicious Meals</h2>
             <p>Bienvenue chez nous, bienvenue au Marrakech.</p>           
-            <button className="mu-readmore-btn mu-reservation-btn">Commander</button>
+            <a href='/menu' className="mu-readmore-btn mu-reservation-btn">Commander</a>
           </div>
     </div>
   </div>
@@ -363,38 +363,6 @@ const HomeComponent = () => {
                 </div>
                 </div>
             </section>
-
-
-        {/* Panier Section */}
-        {/* <body>
-            <header>
-                <h1>Votre Panier</h1>
-            </header>
-            <main>
-                <section id="cart">
-                    <h2>Votre Commande</h2>
-                    <ul>
-                        <li>
-                            <span>Nom du Produit 1</span>
-                            <span>Prix: $10.00</span>
-                            <span>Quantité: 2</span>
-                            <button className="remove-button">Retirer</button>
-                        </li>
-                        <li>
-                            <span>Nom du Produit 2</span>
-                            <span>Prix: $15.00</span>
-                            <span>Quantité: 1</span>
-                            <button className="remove-button">Retirer</button>
-                        </li>
-                    </ul>
-                    <p>Total: $35.00</p>
-                    <button id="checkout-button">Passer Commande</button>
-                </section>
-            </main>
-            <footer>
-                <p>&copy; 2023 Votre Entreprise</p>
-            </footer>
-        </body> */}
 
 
 
