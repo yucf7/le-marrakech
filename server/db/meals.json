@@ -1,0 +1,32 @@
+[{
+  "name": "SEFFA",
+  "description": "Un plat sucré-salé à base de vermicelles ou de semoule de blé dur, cuits à la vapeur et décorés de poudre de cannelle, des raisins secs ou des abricots séchés et des amandes entières ou effilées ou des noix et souvent saupoudré de sucre glace.i",
+  "image": "https://i.ibb.co/FqCgB9G/1.jpg",
+  "quantity": 0,
+  "price": 15.95,
+  "__v": 0
+},
+{
+  "name": "COUSCOUS",
+  "description": "Il s’agit de la semoule de blé cuite dans un couscoussier à la vapeur et d’un corps gras qui peut être soit du beurre ou généralement de l’huile d’olive.contient une sélection très raffinée de légumes tels que : les carottes, les potirons et les tomates. Il y a également des épices comme le safran, le gingembre, le ras-el-hanout. Vous pouvez y mettre des pommes de terre ou des patates douces ou encore des fèves.",
+  "image": "https://i.ibb.co/jJ7dY4x/2.jpg",
+  "quantity": 92,
+  "price": 12.95,
+  "__v": 0
+},
+{
+  "name": "PASTILLA",
+  "description": "un plat traditionnel constitué d'une enveloppe en feuilles de brick, une base d'oignons, de persil, de coriandre, d'œuf dur et d'amandes, ce mélange de sucré et de salé est parfumé à la cannelle",
+  "image": "https://i.ibb.co/ChfsqM4/3.jpg",
+  "quantity": 99,
+  "price": 18.95,
+  "__v": 0
+},
+{
+  "name": "BRIOUAT",
+  "description": "Le triangle aux amandes est la variété sucrée ; il est préparé à base d'amandes grillées, sucre, eau de fleur d'oranger et cannelle, le tout enveloppé dans une feuille de brik (warqa au Maroc), en forme de triangle et enrobé de miel",
+  "image": "https://i.ibb.co/ZMYrKs4/4.jpg",
+  "quantity": 100,
+  "price": 11.95,
+  "__v": 0
+}]

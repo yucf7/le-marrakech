@@ -23,6 +23,7 @@ app.use(mainRoutes)
 try {
     app.listen(port, async () => {
         await db_init.connect();
+        await db_init.fillDataBase();
         console.log('\n---------------\n')
         console.log(`Server listening on port ${port}`);
         console.log('\n---------------\n')
