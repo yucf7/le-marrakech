@@ -7,10 +7,10 @@ const MenuComponent = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [cart, setCart] = useState([{}]);
   const userId = localStorage.getItem('user');
-
+  const [addedToCart, setAddedToCart] = useState<{ [key: string]: boolean }>({});
 
   useEffect(() => {
-    fetch('http://localhost:4000/') 
+    fetch('http://localhost:4000/')
       .then((response) => response.json())
       .then((data) => setMenuItems(data))
       .catch((error) => console.error('Erreur lors du chargement des données', error));
@@ -22,18 +22,19 @@ const MenuComponent = () => {
       const userId = localStorage.getItem('user');
       let res = await fetch(`http://localhost:4000/cart/add/${mealId}/${userId}`, {
         method: "PUT",
-        headers: {'Content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json' }
       });
       if (res.status === 200) {
-        const data = await res.json(); 
-        // show popup animation 
-        // RANYA
+        setAddedToCart((prev) => ({
+          ...prev,
+          [menuItem._id]: true
+        }));
       }
-    setCart([...cart, menuItem]);               
-  }
-  catch(error){
-    console.log(error);
-  }
+      setCart([...cart, menuItem]);
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -57,13 +58,17 @@ const MenuComponent = () => {
                 <div className="out-of-stock">
                 </div>
               ) : (
-                <button onClick={() => addToCart(menuItem)} disabled={false}>
-                  Add to cart
+                <button onClick={() => addToCart(menuItem)} disabled={addedToCart[menuItem._id]}>
+                  {addedToCart[menuItem._id] ? "ADDED" : "Add to cart"}
                 </button>
               )}
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="view-cart-button">
+        <a className='view-button' href = '/cart'> View cart</a>
       </div>
     </div>
   );
