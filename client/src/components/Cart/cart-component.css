@@ -48,3 +48,7 @@ cart-page.css
     background-color: #0056b3;
   }
   
+  .delete-icon {
+    color: red;
+    margin-right: 50px;
+  }

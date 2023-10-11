@@ -2,12 +2,26 @@ import React, { useState, useEffect } from 'react';
 import './cart-component.css';
 import { Meal } from '../../interfaces/Meal';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const CartComponent = () => {
   const [cartItems, setCartItems] = useState<Meal[]>([]);
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
 
+
+  
+  const deleteMeal = async (mealId: any) =>{
+    const userId = localStorage.getItem('user');
+    let res = await fetch(`http://localhost:4000/cart/delete/${mealId}/${userId}`, {
+      method: "PUT",
+      headers: {'Content-Type': 'application/json'},
+    });
+    if (res.status === 200) {
+      window.location.reload();
+    }
+  }
   const saveCart = async (meals: any[]) =>{
     const body = {meals};
     const userId = localStorage.getItem('user');
@@ -73,8 +87,16 @@ const CartComponent = () => {
         <tbody>
           {cartItems && cartItems.length > 0 ? (
             cartItems.map((item: any) => (
-              <tr key={item.meal.id}>
-                <td>{item.meal.name}</td>
+              <tr key={item.meal._id}>
+
+                <td>
+                  <div>
+                    <button onClick={()=>{deleteMeal(item.meal._id)}}>
+                    <FontAwesomeIcon className='delete-icon' icon={faTrash} />
+                    </button>
+                    {item.meal.name}
+                  </div>
+                </td>
                 <td>${Number(item.meal.price).toFixed(2)}</td>
                 <td>
                   {
