@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './menu-component.css';
-import CartComponent from '../Cart/cart-component';
+import CartComponent from '../cart/cart-component';
 import { Meal } from '../../interfaces/Meal';
 
 const MenuComponent = () => {

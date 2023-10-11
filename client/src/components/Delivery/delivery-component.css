@@ -1,4 +1,3 @@
-/* Votre fichier CSS existant */
 
 .delivery-body {
   margin: 0;
@@ -57,9 +56,8 @@ button:hover {
   text-shadow: 1px 1px 1px black;
 }
 
-/* Nouveaux styles pour l'alerte */
 .alert {
-  background-color: #4CAF50; /* Couleur de fond verte par défaut */
+  background-color: #4CAF50; 
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -69,9 +67,9 @@ button:hover {
 }
 
 .alert.success {
-  background-color: #4CAF50; /* Couleur de fond verte pour le succès */
+  background-color: #4CAF50;
 }
 
 .alert.failed {
-  background-color: #FF5733; /* Couleur de fond rouge pour l'échec */
+  background-color: #FF5733; 
 }
