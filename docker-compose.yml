@@ -1,20 +1,40 @@
 version: '3'
 services:
-  frontend:
-    image: frontend:v1
-    ports:
-      - "3000:3000"  
-
-  backend:
-    image: backend:v1
-    ports:
-      - "4000:4000"  
-    depends_on:
-      - mongodb 
-
   mongodb:
     image: mongo:latest
+    restart: unless-stopped
+    env_file: ./server/.env
     ports:
-      - "27017:27017"  
+      - "$MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT"
     volumes:
-      - ./data:/data/db  
+      - ./data:/data/db
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=le_marrakech
+    ports:
+      - "8081:8081"
+  backend:
+    depends_on:
+      - mongodb
+    build:
+      context: ./server
+    restart: unless-stopped
+    env_file: ./server/.env
+    environment:
+      - DB_HOST=mongodb
+    ports:
+      - "$SERVER_LOCAL_PORT:$SERVER_DOCKER_PORT"
+  frontend:
+    build:
+      context: ./client
+    restart: unless-stopped
+    env_file: ./server/.env
+    ports:
+      - "$CLIENT_LOCAL_PORT:$CLIENT_DOCKER_PORT"
+    depends_on:
+      - backend
