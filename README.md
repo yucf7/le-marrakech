@@ -1,14 +1,14 @@
 ![](./documentation/md%20res/1.jpeg)![](./documentation/md%20res/2.jpeg)
-## DOCUMENTATION 
+
+## DOCUMENTATION
+
 ### PROJET APPLICATION WEB
 
 ![](./documentation/md%20res/3.jpeg)
 
+### Réalisé par :
 
-
-### Réalisé par : 
-
-###### HERBA Ranya 
+###### HERBA Ranya
 
 ###### FRIKHAT Youssef
 
@@ -16,8 +16,7 @@
 
 ###### Corentin Mors
 
-### Année universitaire : 2023 – 2024
-
+### Année universitaire : 2023 - 2024
 
 ## INTRODUCTION :
 
@@ -34,14 +33,13 @@ temps réel.
 
 Le projet est développé à l'aide de Node.js avec expressJS pour le serveur et React pour le client.
 
-
 ## Sommaire
 
 ```
 # Introduction:
-# Installation et Exécution 
-# Utilisation : 
-# Structure du Projet : 
+# Installation et Exécution
+# Utilisation :
+# Structure du Projet :
 # Fonctionnalités :
 ```
 
@@ -53,14 +51,17 @@ Pour installer le projet, suivez les étapes suivantes :
  Clonez le projet à partir du référentiel git.
  Installez Node.js version 18 ou supérieure.
 ```
+
 ```
  Ouvrez une invite de commande dans le dossier racine du projet/client et executez npm install +
 npm start et dans le dossier racine du projet/server et executez npm install + node index.js
 ```
+
 ```
  Vous pouvez accédez toujours au site web en ouvrant un navigateur et en accédant à
 l'URL http://localhost:3000/.
 ```
+
 ## Utilisation :
 
 L'interface utilisateur est intuitive et facile à utiliser. Les utilisateurs peuvent créer un compte, se
@@ -104,6 +105,7 @@ Les fonctionnalités principales du projet comprennent :
  Valider le panier
  Confirmer la livraison
 ```
+
 Collections Mongo:
 User
 Meal
@@ -113,5 +115,3 @@ Cart
 Et Finalement : Api
 
 L'API est accessible à l'URL [http://localhost:4000/.](http://localhost:4000/.)
-
-
