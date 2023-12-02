@@ -1,40 +1,20 @@
-version: '3'
+version: "3"
 services:
-  mongodb:
-    image: mongo:latest
-    restart: unless-stopped
-    env_file: ./server/.env
-    ports:
-      - "$MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT"
-    volumes:
-      - ./data:/data/db
-  mongo-express:
-    image: mongo-express
-    restart: unless-stopped
-    environment:
-      - ME_CONFIG_MONGODB_SERVER=mongodb
-      - ME_CONFIG_MONGODB_PORT=27017
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
-      - ME_CONFIG_MONGODB_AUTH_DATABASE=le_marrakech
-    ports:
-      - "8081:8081"
-  backend:
-    depends_on:
-      - mongodb
-    build:
-      context: ./server
-    restart: unless-stopped
-    env_file: ./server/.env
-    environment:
-      - DB_HOST=mongodb
-    ports:
-      - "$SERVER_LOCAL_PORT:$SERVER_DOCKER_PORT"
-  frontend:
-    build:
-      context: ./client
-    restart: unless-stopped
-    env_file: ./server/.env
-    ports:
-      - "$CLIENT_LOCAL_PORT:$CLIENT_DOCKER_PORT"
-    depends_on:
-      - backend
+    mongodb:
+        image: mongo:latest
+        restart: unless-stopped
+        env_file: ./server/.env
+        ports:
+            - "$MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT"
+        volumes:
+            - ./data:/data/db
+    mongo-express:
+        image: mongo-express
+        restart: unless-stopped
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongodb
+            - ME_CONFIG_MONGODB_PORT=27017
+            - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+            - ME_CONFIG_MONGODB_AUTH_DATABASE=le_marrakech
+        ports:
+            - "8081:8081"
